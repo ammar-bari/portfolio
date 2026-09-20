@@ -4,6 +4,7 @@ import { useState } from "react";
 import type { MediaItem } from "./MediaModal";
 import AchievementBadge from "./AchievementBadge";
 import { assetUrl } from "@/lib/assetUrl";
+import MobileProjectCard, { useProjectMobile } from "./MobileProjectCard";
 
 interface StandardProject {
   title: string;
@@ -24,6 +25,11 @@ interface StandardProjectCardProps {
 
 const StandardProjectCard = ({ project, index, onMediaClick }: StandardProjectCardProps) => {
   const [expanded, setExpanded] = useState(true);
+  const isMobile = useProjectMobile();
+
+  if (isMobile) return <MobileProjectCard title={project.title} subtitle={project.status}
+    paragraphs={[{ body: project.description }]} tags={project.tags} media={project.media} onMediaClick={onMediaClick}
+    badges={project.participation?.map(label => <AchievementBadge key={label} tier="recognition" icon="trophy" label={label} />)} />;
 
   return (
     <motion.div

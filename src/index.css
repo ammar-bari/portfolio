@@ -180,6 +180,23 @@ html { scroll-padding-top: 5rem; }
 }
 .terminal-block pre { overflow-wrap: anywhere; }
 
+.mobile-description-preview {
+  position: relative;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  max-height: 3.25em;
+}
+.mobile-description-preview::after {
+  content: "......";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding-left: 0.4em;
+  background: hsl(var(--card));
+}
+
 @media (max-width: 639px) {
   .mobile-media-gallery,
   .mobile-filter-strip {

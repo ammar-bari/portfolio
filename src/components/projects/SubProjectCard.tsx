@@ -3,6 +3,7 @@ import { ChevronDown, Image, Play } from "lucide-react";
 import { useState } from "react";
 import type { MediaItem } from "./MediaModal";
 import { assetUrl } from "@/lib/assetUrl";
+import MobileProjectCard, { useProjectMobile } from "./MobileProjectCard";
 
 interface SubProject {
   title: string;
@@ -20,6 +21,10 @@ interface SubProjectCardProps {
 
 const SubProjectCard = ({ project, onMediaClick }: SubProjectCardProps) => {
   const [expanded, setExpanded] = useState(true);
+  const isMobile = useProjectMobile();
+
+  if (isMobile) return <MobileProjectCard title={project.title} subtitle={project.year}
+    paragraphs={[{ body: project.description }]} tags={project.tags} media={project.media} onMediaClick={onMediaClick} />;
 
   return (
     <motion.div

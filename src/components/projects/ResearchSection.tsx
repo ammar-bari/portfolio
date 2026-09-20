@@ -10,6 +10,7 @@ import markerModuleAsset from "@/assets/ir-pose-marker-module.jpeg.asset.json";
 import demoVideoAsset from "@/assets/ir-pose-demo.mp4.asset.json";
 import uwbDemoVideoAsset from "@/assets/uwb-localisation-demo.mp4.asset.json";
 import { assetUrl } from "@/lib/assetUrl";
+import MobileProjectCard, { useProjectMobile } from "./MobileProjectCard";
 
 interface MediaItem {
   type: "image" | "video";
@@ -121,6 +122,7 @@ const metrics = [
 ];
 
 const ResearchSection = () => {
+  const isMobile = useProjectMobile();
   const [modalMedia, setModalMedia] = useState<MediaItem[] | null>(null);
   const [modalIndex, setModalIndex] = useState(0);
   const [expandedCards, setExpandedCards] = useState<Record<string, boolean>>(
@@ -170,7 +172,12 @@ const ResearchSection = () => {
 
         {/* Each project pairs its description with its own media. */}
         <div className="grid gap-4 p-3 sm:p-4">
-          {researchCards.map((card) => (
+          {researchCards.map((card) => isMobile ? (
+            <MobileProjectCard key={card.title} title={card.title} subtitle={card.year}
+              paragraphs={card.paragraphs} tags={card.tags} media={card.media ?? []}
+              badges={card.badge ? <AchievementBadge tier="recognition" icon="file-text" label={card.badge} /> : undefined}
+              onMediaClick={(media, index) => { setModalMedia(media); setModalIndex(index); }} />
+          ) : (
             <motion.div
               layout
               key={card.title}
