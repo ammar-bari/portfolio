@@ -27,7 +27,7 @@ const SubProjectCard = ({ project, onMediaClick }: SubProjectCardProps) => {
       className="bg-card/60 border border-border rounded-lg overflow-hidden hover:border-primary/40 transition-all duration-300 hover:box-glow-cyan"
     >
       {/* Terminal header */}
-      <div className="terminal-block m-3 mb-0 p-3 text-xs">
+      <div className="terminal-block hidden sm:block m-3 mb-0 p-3 text-xs">
         <div className="flex items-center gap-2 mb-2">
           <div className="w-2.5 h-2.5 rounded-full bg-destructive/60" />
           <div className="w-2.5 h-2.5 rounded-full bg-neon-green/60" />
@@ -90,14 +90,14 @@ const SubProjectCard = ({ project, onMediaClick }: SubProjectCardProps) => {
 
               {/* Media thumbnails */}
               {project.media.length > 0 && (
-                <div className="grid grid-cols-2 gap-3">
+                <div className="mobile-media-gallery flex gap-3 overflow-x-auto snap-x snap-mandatory pb-2 sm:grid sm:grid-cols-2 sm:overflow-visible sm:pb-0">
                   {project.media.map((item, i) => (
                     <button
                       key={i}
                        type="button"
                        aria-label={`Open ${item.alt || project.title}`}
                       onClick={() => onMediaClick(project.media, i)}
-                      className="relative aspect-[4/3] rounded-lg border border-border overflow-hidden hover:border-primary/40 transition-all group/media"
+                      className="relative w-[82%] shrink-0 snap-center aspect-[4/3] rounded-lg border border-border overflow-hidden hover:border-primary/40 transition-all group/media sm:w-auto"
                     >
                       {item.type === "image" ? (
                         <img

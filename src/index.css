@@ -179,3 +179,13 @@ html { scroll-padding-top: 5rem; }
   }
 }
 .terminal-block pre { overflow-wrap: anywhere; }
+
+@media (max-width: 639px) {
+  .mobile-media-gallery,
+  .mobile-filter-strip {
+    overscroll-behavior-inline: contain;
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--accent-teal) / 0.45) transparent;
+    -webkit-overflow-scrolling: touch;
+  }
+}

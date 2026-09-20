@@ -35,7 +35,7 @@ const StandardProjectCard = ({ project, index, onMediaClick }: StandardProjectCa
       className="group bg-card border border-border rounded-lg overflow-hidden hover:border-primary/40 transition-all duration-300 hover:box-glow-cyan"
     >
       {/* Terminal preview */}
-      <div className="terminal-block m-4 mb-0 p-4 text-xs">
+      <div className="terminal-block hidden sm:block m-4 mb-0 p-4 text-xs">
         <div className="flex items-center gap-2 mb-3">
           <div className="w-3 h-3 rounded-full bg-destructive/60" />
           <div className="w-3 h-3 rounded-full bg-neon-green/60" />
@@ -52,7 +52,7 @@ const StandardProjectCard = ({ project, index, onMediaClick }: StandardProjectCa
         onClick={() => setExpanded((current) => !current)}
         aria-expanded={expanded}
         aria-label={`${expanded ? "Collapse" : "Expand"} ${project.title}`}
-        className="w-full px-6 pt-5 pb-3 flex items-center justify-between gap-4 text-left"
+        className="w-full px-4 sm:px-6 pt-5 pb-3 flex items-center justify-between gap-4 text-left"
       >
         <span className="flex min-w-0 flex-wrap items-center gap-2">
           <span className="text-xl font-semibold text-foreground group-hover:text-primary transition-colors">
@@ -70,7 +70,7 @@ const StandardProjectCard = ({ project, index, onMediaClick }: StandardProjectCa
       </button>
 
       {project.participation && (
-        <div className="flex flex-wrap justify-end gap-2 px-6 pb-4">
+        <div className="flex flex-wrap gap-2 px-4 sm:px-6 pb-4">
           {project.participation.map(label => <AchievementBadge key={label} tier="recognition" icon="trophy" label={label} />)}
         </div>
       )}
@@ -84,7 +84,7 @@ const StandardProjectCard = ({ project, index, onMediaClick }: StandardProjectCa
             transition={{ duration: 0.3, ease: "easeInOut" }}
             className="overflow-hidden"
           >
-            <div className="px-6 pb-6">
+            <div className="px-4 sm:px-6 pb-5 sm:pb-6">
               <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
                 {project.description}
               </p>
@@ -97,14 +97,14 @@ const StandardProjectCard = ({ project, index, onMediaClick }: StandardProjectCa
               </div>
 
               {project.media.length > 0 && (
-                <div className="grid grid-cols-2 gap-3">
+                <div className="mobile-media-gallery flex gap-3 overflow-x-auto snap-x snap-mandatory pb-2 sm:grid sm:grid-cols-2 sm:overflow-visible sm:pb-0">
                   {project.media.slice(0, 4).map((item, i) => (
                     <button
                       key={item.src}
                       type="button"
                       aria-label={`Open ${item.alt || project.title}`}
                       onClick={() => onMediaClick(project.media, i)}
-                      className="relative aspect-[4/3] rounded-lg border border-border overflow-hidden hover:border-primary/40 transition-all group/media"
+                      className="relative w-[82%] shrink-0 snap-center aspect-[4/3] rounded-lg border border-border overflow-hidden hover:border-primary/40 transition-all group/media sm:w-auto"
                     >
                       {item.type === "image" ? (
                         <img src={assetUrl(item.src)} alt={item.alt || project.title} className="w-full h-full bg-muted/30" style={{ objectFit: item.fit || "cover", objectPosition: item.position }} loading="lazy" />

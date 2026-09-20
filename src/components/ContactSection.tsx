@@ -29,8 +29,8 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-24 relative">
-      <div className="container mx-auto px-6">
+    <section id="contact" className="py-14 sm:py-24 relative">
+      <div className="container mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -45,7 +45,7 @@ const ContactSection = () => {
           </h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12">
+        <div className="grid md:grid-cols-2 gap-8 sm:gap-12">
           <motion.form
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -63,7 +63,7 @@ const ContactSection = () => {
                 disabled={status === "sending"}
                 value={formData.name}
                 onChange={(e) => { setFormData({ ...formData, name: e.target.value }); setStatus("idle"); }}
-                className="w-full bg-muted border border-border rounded-md px-4 py-3 text-foreground font-mono text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/30 transition-all"
+                className="w-full bg-muted border border-border rounded-md px-4 py-3 text-foreground font-mono text-base sm:text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/30 transition-all"
                 placeholder='"Your Name"' />
 
             </div>
@@ -77,7 +77,7 @@ const ContactSection = () => {
                 disabled={status === "sending"}
                 value={formData.email}
                 onChange={(e) => { setFormData({ ...formData, email: e.target.value }); setStatus("idle"); }}
-                className="w-full bg-muted border border-border rounded-md px-4 py-3 text-foreground font-mono text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/30 transition-all"
+                className="w-full bg-muted border border-border rounded-md px-4 py-3 text-foreground font-mono text-base sm:text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/30 transition-all"
                 placeholder='"you@email.com"' />
 
             </div>
@@ -91,14 +91,14 @@ const ContactSection = () => {
                 rows={5}
                 value={formData.message}
                 onChange={(e) => { setFormData({ ...formData, message: e.target.value }); setStatus("idle"); }}
-                className="w-full bg-muted border border-border rounded-md px-4 py-3 text-foreground font-mono text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/30 transition-all resize-none"
+                className="w-full bg-muted border border-border rounded-md px-4 py-3 text-foreground font-mono text-base sm:text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/30 transition-all resize-none"
                 placeholder='"Tell me about your project or opportunity…"' />
 
             </div>
             <button
               type="submit"
               disabled={status === "sending" || !endpoint}
-              className="disabled:opacity-50 disabled:cursor-not-allowed inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-mono text-sm rounded-md hover:shadow-[0_0_20px_hsl(177_100%_50%/0.3)] transition-all duration-300">
+              className="disabled:opacity-50 disabled:cursor-not-allowed inline-flex w-full sm:w-auto justify-center items-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-mono text-sm rounded-md hover:shadow-[0_0_20px_hsl(177_100%_50%/0.3)] transition-all duration-300">
 
               <Send size={16} />
               {status === "sending" ? "Sending…" : status === "sent" ? "Message sent! ✓" : "send_message()"}
@@ -165,7 +165,7 @@ const ContactSection = () => {
       </div>
 
       {/* Footer */}
-      <div className="container mx-auto px-6 mt-24 pt-8 border-t border-border">
+      <div className="container mx-auto px-4 sm:px-6 mt-14 sm:mt-24 pt-8 border-t border-border">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="font-mono text-xs text-muted-foreground">
             <span className="text-terminal-text">$</span> echo "© 2026 Ammar Bari. Built with passion & caffeine."

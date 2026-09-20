@@ -59,8 +59,8 @@ const ResumeSection = () => {
   };
 
   return (
-    <section id="resume" className="py-24 relative section-divider">
-      <div className="container mx-auto px-6">
+    <section id="resume" className="py-14 sm:py-24 relative section-divider">
+      <div className="container mx-auto px-4 sm:px-6">
         <div className="flex flex-wrap items-end justify-between gap-6 mb-8">
           <div><p className="font-mono text-sm text-primary mb-2">// the person behind the projects</p><h2 className="text-4xl font-bold">My <span className="gradient-text">Resume</span></h2><p className="text-muted-foreground mt-3">Explore my experience, systems and technical toolkit.</p></div>
           <a href={assetUrl("/Ammar_Bari_CV.pdf")} download className="inline-flex items-center gap-2 rounded-lg bg-foreground px-5 py-3 text-background text-sm font-medium hover:opacity-85"><ArrowDownToLine size={17} /> Download CV <span className="opacity-60 text-xs">PDF</span></a>
@@ -76,10 +76,10 @@ const ResumeSection = () => {
           </div>
 
           <div className={`grid lg:grid-cols-[240px_minmax(0,1fr)] ${view === "terminal" ? "bg-card text-foreground" : ""}`}>
-            <nav aria-label="Resume sections" className={`p-4 lg:p-5 border-b lg:border-b-0 lg:border-r ${view === "terminal" ? "border-border bg-muted/20" : "border-border bg-muted/20"}`}>
+            <nav aria-label="Resume sections" className={`min-w-0 p-3 sm:p-4 lg:p-5 border-b lg:border-b-0 lg:border-r ${view === "terminal" ? "border-border bg-muted/20" : "border-border bg-muted/20"}`}>
               <p className={`hidden lg:block text-[10px] font-mono uppercase tracking-[0.2em] mb-5 px-3 ${view === "terminal" ? "text-muted-foreground" : "text-muted-foreground"}`}>{view === "terminal" ? "~/ammar/resume" : "Explore the profile"}</p>
-              <div className="flex flex-wrap lg:flex-col gap-1">
-                {sections.map((s, i) => { const chosen = activeId === s.id; return <button key={s.id} type="button" aria-pressed={chosen} onClick={() => select(s.id)} className={`flex items-center gap-3 rounded-lg px-3 py-3 text-left text-sm transition-colors ${chosen ? view === "terminal" ? "bg-primary/10 text-primary font-medium" : "bg-primary/10 text-primary font-medium" : view === "terminal" ? "text-muted-foreground hover:bg-muted hover:text-foreground" : "text-muted-foreground hover:bg-muted"}`}><span>{view === "terminal" ? s.id : s.label}</span><span className="hidden lg:block ml-auto font-mono text-[10px] opacity-50">0{i + 1}</span></button>; })}
+              <div className="mobile-filter-strip flex gap-1 overflow-x-auto lg:overflow-visible lg:flex-col">
+                {sections.map((s, i) => { const chosen = activeId === s.id; return <button key={s.id} type="button" aria-pressed={chosen} onClick={() => select(s.id)} className={`shrink-0 whitespace-nowrap flex items-center gap-3 rounded-lg px-3 py-3 text-left text-sm transition-colors ${chosen ? view === "terminal" ? "bg-primary/10 text-primary font-medium" : "bg-primary/10 text-primary font-medium" : view === "terminal" ? "text-muted-foreground hover:bg-muted hover:text-foreground" : "text-muted-foreground hover:bg-muted"}`}><span>{view === "terminal" ? s.id : s.label}</span><span className="hidden lg:block ml-auto font-mono text-[10px] opacity-50">0{i + 1}</span></button>; })}
               </div>
               <a href={assetUrl("/Ammar_Bari_CV.pdf")} target="_blank" rel="noopener noreferrer" className="mt-6 hidden lg:inline-flex items-center gap-2 px-3 text-xs underline underline-offset-4 opacity-70">Open original CV <ArrowUpRight size={13} /></a>
             </nav>

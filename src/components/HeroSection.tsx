@@ -43,13 +43,13 @@ const HeroSection = () => {
   }, [displayText, isDeleting, termIndex]);
 
   return (
-    <section id="home" className="relative min-h-screen pt-28 pb-16 flex items-center justify-center overflow-hidden scanline section-divider">
+    <section id="home" className="relative min-h-[100svh] pt-24 sm:pt-28 pb-12 sm:pb-16 flex items-center justify-center overflow-hidden scanline section-divider">
       {/* Gradient orbs */}
       <div className="absolute top-1/4 -left-32 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-float" />
       <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-secondary/5 rounded-full blur-3xl animate-float" style={{ animationDelay: "3s" }} />
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -65,12 +65,12 @@ const HeroSection = () => {
               <span className="ml-2">whoami</span>
             </div>
 
-            <h1 className="text-5xl md:text-7xl font-bold mb-2 tracking-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-2 tracking-tight">
               <span className="text-[hsl(var(--text-name))]">Ammar</span>{" "}
               <span className="text-[hsl(var(--accent-teal))]">Bari</span>
             </h1>
 
-            <div className="font-mono text-lg md:text-xl mt-4 mb-8 h-8 text-[hsl(var(--text-heading))]">
+            <div className="font-mono text-base sm:text-lg md:text-xl mt-4 mb-6 sm:mb-8 min-h-8 text-[hsl(var(--text-heading))]">
               <span>{">"}</span>{" "}
               <span>{displayText}</span>
               <span className="animate-blink-cursor">|</span>
@@ -81,16 +81,16 @@ const HeroSection = () => {
               I build control systems, embedded software and robots that can navigate their surroundings.
             </p>
 
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-col min-[400px]:flex-row flex-wrap gap-3 sm:gap-4">
               <a
                 href="#projects"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-[hsl(var(--text-name))] text-[hsl(var(--bg-base))] font-mono text-sm rounded-md transition-all duration-300 hover:opacity-90"
+                className="inline-flex justify-center items-center gap-2 px-6 py-3 bg-[hsl(var(--text-name))] text-[hsl(var(--bg-base))] font-mono text-sm rounded-md transition-all duration-300 hover:opacity-90"
               >
                 {">"} view_projects()
               </a>
               <a
                 href="#contact"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-transparent border border-[hsl(var(--accent-teal))] text-[hsl(var(--accent-deep))] font-mono text-sm rounded-md hover:bg-[hsl(var(--accent-teal))/0.08] transition-all duration-300"
+                className="inline-flex justify-center items-center gap-2 px-6 py-3 bg-transparent border border-[hsl(var(--accent-teal))] text-[hsl(var(--accent-deep))] font-mono text-sm rounded-md hover:bg-[hsl(var(--accent-teal))/0.08] transition-all duration-300"
               >
                 {">"} contact_me()
               </a>
@@ -103,7 +103,7 @@ const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="relative flex justify-center lg:justify-end"
           >
-            <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-2xl overflow-hidden border border-[hsl(var(--accent-teal))]/20 bg-[hsl(var(--bg-base))] shadow-lg">
+            <div className="relative w-52 h-52 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-2xl overflow-hidden border border-[hsl(var(--accent-teal))]/20 bg-[hsl(var(--bg-base))] shadow-lg">
               <img
                 src={assetUrl(headshotAsset.url)}
                 alt="Ammar Bari"

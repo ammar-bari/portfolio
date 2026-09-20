@@ -230,8 +230,8 @@ const ProjectsSection = () => {
   const showRos = activeFilter === "All" || activeFilter === "ROS & Autonomous Systems";
 
   return (
-    <section id="projects" className="py-24 relative overflow-hidden section-divider">
-      <div className="container mx-auto px-6">
+    <section id="projects" className="py-14 sm:py-24 relative overflow-hidden section-divider">
+      <div className="container mx-auto px-4 sm:px-6">
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -252,14 +252,14 @@ const ProjectsSection = () => {
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="flex flex-wrap gap-2 mb-12"
+          className="flex gap-2 mb-8 sm:mb-12 -mx-4 px-4 sm:mx-0 sm:px-0 overflow-x-auto sm:flex-wrap mobile-filter-strip"
         >
           {filters.map((filter) => (
             <button
               type="button"
               key={filter}
               onClick={() => setActiveFilter(filter)}
-              className={`font-mono text-xs px-4 py-2 rounded border transition-all duration-300 ${
+              className={`shrink-0 whitespace-nowrap font-mono text-xs px-4 py-3 sm:py-2 rounded border transition-all duration-300 ${
                 activeFilter === filter
                   ? "bg-primary/20 text-primary border-primary/60 box-glow-cyan"
                   : "bg-card/40 text-muted-foreground border-border hover:border-primary/30 hover:text-foreground"
@@ -285,7 +285,7 @@ const ProjectsSection = () => {
           >
             <div className="border border-primary/30 rounded-xl overflow-hidden bg-card/30 box-glow-cyan">
               {/* Main terminal header */}
-              <div className="terminal-block m-4 p-4 text-xs">
+              <div className="terminal-block hidden sm:block m-4 p-4 text-xs">
                 <div className="flex items-center gap-2 mb-3">
                   <div className="w-3 h-3 rounded-full bg-destructive/60" />
                   <div className="w-3 h-3 rounded-full bg-neon-green/60" />
@@ -298,7 +298,7 @@ const ProjectsSection = () => {
 [INFO] MAVLink Communication Established`}</pre>
               </div>
 
-              <div className="px-6 pb-2">
+              <div className="px-4 pt-5 sm:px-6 sm:pt-0 pb-2">
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
                   <div>
                     <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-3">
@@ -324,7 +324,7 @@ const ProjectsSection = () => {
               </div>
 
               {/* Sub-projects */}
-              <div className="grid md:grid-cols-2 gap-4 px-4 pb-6">
+              <div className="grid md:grid-cols-2 gap-4 px-3 sm:px-4 pb-4 sm:pb-6">
                 {underwaterSubProjects.map((sp) => (
                   <SubProjectCard
                     key={sp.title}
@@ -347,7 +347,7 @@ const ProjectsSection = () => {
           >
             <div className="border border-primary/30 rounded-xl overflow-hidden bg-card/30 box-glow-cyan">
               {/* Main terminal header */}
-              <div className="terminal-block m-4 p-4 text-xs">
+              <div className="terminal-block hidden sm:block m-4 p-4 text-xs">
                 <div className="flex items-center gap-2 mb-3">
                   <div className="w-3 h-3 rounded-full bg-destructive/60" />
                   <div className="w-3 h-3 rounded-full bg-neon-green/60" />
@@ -360,7 +360,7 @@ const ProjectsSection = () => {
 [INFO] Multi-Agent Framework Initialized`}</pre>
               </div>
 
-              <div className="px-6 pb-2">
+              <div className="px-4 pt-5 sm:px-6 sm:pt-0 pb-2">
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
                   <div>
                     <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-3">
@@ -381,7 +381,7 @@ const ProjectsSection = () => {
               </div>
 
               {/* Sub-projects */}
-              <div className="grid md:grid-cols-2 gap-4 px-4 pb-6">
+              <div className="grid md:grid-cols-2 gap-4 px-3 sm:px-4 pb-4 sm:pb-6">
                 {rosSubProjects.map((sp) => (
                   <SubProjectCard
                     key={sp.title}

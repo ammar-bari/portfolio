@@ -29,8 +29,8 @@ const workshops = [
 ];
 
 const WorkshopsSection = () => (
-  <section id="workshops" className="py-24 relative section-divider">
-    <div className="container mx-auto px-6">
+  <section id="workshops" className="py-14 sm:py-24 relative section-divider">
+    <div className="container mx-auto px-4 sm:px-6">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -55,7 +55,7 @@ const WorkshopsSection = () => (
               transition={{ delay: index * 0.1 }}
               className="bg-card border border-border rounded-lg overflow-hidden hover:border-primary/40 transition-colors"
             >
-              <div className="terminal-block m-4 mb-0 p-4 text-xs">
+              <div className="terminal-block hidden sm:block m-4 mb-0 p-4 text-xs">
                 <div className="flex items-center gap-2 mb-3">
                   <span className="w-3 h-3 rounded-full bg-destructive/60" />
                   <span className="w-3 h-3 rounded-full bg-neon-green/60" />
@@ -65,7 +65,7 @@ const WorkshopsSection = () => (
                 <pre className="text-terminal-text whitespace-pre-wrap leading-relaxed">{workshop.command}</pre>
               </div>
 
-              <div className="p-6">
+              <div className="p-4 sm:p-6">
                 <div className="flex flex-wrap items-start justify-between gap-4 mb-3">
                   <div className="flex items-center gap-3 min-w-0">
                     <h3 className="text-xl font-semibold text-foreground">{workshop.title}</h3>
@@ -86,14 +86,14 @@ const WorkshopsSection = () => (
                 </div>
 
                 {workshop.photo ? (
-                  <div className="grid grid-cols-2 gap-3">
-                    <a href={assetUrl(workshop.photo)} target="_blank" rel="noopener noreferrer" aria-label="Open RC Car Workshop photo" className="block aspect-[9/16] overflow-hidden rounded-md border border-primary/30">
+                  <div className="mobile-media-gallery flex gap-3 overflow-x-auto snap-x snap-mandatory pb-2 sm:grid sm:grid-cols-2 sm:overflow-visible sm:pb-0">
+                    <a href={assetUrl(workshop.photo)} target="_blank" rel="noopener noreferrer" aria-label="Open RC Car Workshop photo" className="block w-[76%] shrink-0 snap-center aspect-[9/16] overflow-hidden rounded-md border border-primary/30 sm:w-auto">
                       <img src={assetUrl(workshop.photo)} alt="Presenting RC car components during the workshop" loading="lazy" className="w-full h-full object-cover" />
                     </a>
-                    <video src={assetUrl(workshop.videos[0])} poster={assetUrl(workshop.poster)} controls playsInline preload="metadata" aria-label="RC Car Workshop video" className="w-full aspect-[9/16] object-cover rounded-md border border-primary/30 bg-black" />
+                    <video src={assetUrl(workshop.videos[0])} poster={assetUrl(workshop.poster)} controls playsInline preload="metadata" aria-label="RC Car Workshop video" className="w-[76%] shrink-0 snap-center aspect-[9/16] object-cover rounded-md border border-primary/30 bg-black sm:w-full" />
                   </div>
                 ) : (
-                  <div className="grid grid-cols-2 items-start justify-items-center gap-3">
+                  <div className="mobile-media-gallery flex gap-3 overflow-x-auto snap-x snap-mandatory pb-2 sm:grid sm:grid-cols-2 sm:items-start sm:justify-items-center sm:overflow-visible sm:pb-0">
                     {workshop.videos.map((src, videoIndex) => (
                       <video
                         key={src}
@@ -102,7 +102,7 @@ const WorkshopsSection = () => (
                         playsInline
                         preload="metadata"
                         aria-label={`${workshop.title} video ${videoIndex + 1}`}
-                        className="w-full min-w-0 max-w-72 h-auto rounded-md border border-primary/30 bg-black"
+                        className="w-[76%] shrink-0 snap-center sm:w-full sm:min-w-0 sm:max-w-72 h-auto rounded-md border border-primary/30 bg-black"
                       />
                     ))}
                   </div>

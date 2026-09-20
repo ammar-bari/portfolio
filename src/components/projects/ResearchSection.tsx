@@ -139,7 +139,7 @@ const ResearchSection = () => {
         <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-60" />
 
         {/* Header band */}
-        <div className="px-6 pt-6 pb-5 border-b border-primary/20 bg-gradient-to-r from-primary/5 to-transparent">
+        <div className="px-4 sm:px-6 pt-5 sm:pt-6 pb-5 border-b border-primary/20 bg-gradient-to-r from-primary/5 to-transparent">
           <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary/80 mb-2">
             Research Internship
           </div>
@@ -158,7 +158,7 @@ const ResearchSection = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-primary/10">
           {metrics.map((m) => (
             <div key={m.label} className="bg-card/60 px-4 py-4 text-center">
-              <div className="text-2xl md:text-3xl font-bold text-primary font-mono-code">
+              <div className="text-lg sm:text-2xl md:text-3xl font-bold text-primary font-mono-code">
                 {m.value}
               </div>
               <div className="font-mono text-[10px] text-muted-foreground mt-1 leading-tight">
@@ -169,7 +169,7 @@ const ResearchSection = () => {
         </div>
 
         {/* Each project pairs its description with its own media. */}
-        <div className="grid gap-4 p-4">
+        <div className="grid gap-4 p-3 sm:p-4">
           {researchCards.map((card) => (
             <motion.div
               layout
@@ -177,7 +177,7 @@ const ResearchSection = () => {
               className="bg-card/60 border border-border rounded-lg overflow-hidden hover:border-primary/40 transition-all duration-300 hover:box-glow-cyan flex flex-col"
             >
               {/* Terminal header */}
-              <div className="terminal-block m-3 mb-0 p-3 text-xs">
+              <div className="terminal-block hidden sm:block m-3 mb-0 p-3 text-xs">
                 <div className="flex items-center gap-2 mb-2">
                   <div className="w-2.5 h-2.5 rounded-full bg-destructive/60" />
                   <div className="w-2.5 h-2.5 rounded-full bg-neon-green/60" />
@@ -230,7 +230,7 @@ const ResearchSection = () => {
                     <div className="px-4 pb-4 flex flex-col lg:block lg:flow-root">
                 {/* Media gallery */}
                 {card.media && card.media.length > 0 && (
-                  <div className="order-2 grid grid-cols-2 gap-3 mb-5 lg:float-right lg:w-[44%] lg:ml-8">
+                  <div className="mobile-media-gallery order-2 flex gap-3 mb-5 overflow-x-auto snap-x snap-mandatory pb-2 sm:grid sm:grid-cols-2 sm:overflow-visible sm:pb-0 lg:float-right lg:w-[44%] lg:ml-8">
                     {card.media.map((item, i) => (
                       <button
                         key={item.src}
@@ -241,7 +241,7 @@ const ResearchSection = () => {
                           setModalMedia(card.media);
                           setModalIndex(i);
                         }}
-                        className={`group relative overflow-hidden rounded-md border border-border hover:border-primary/50 transition-all ${item.type === "video" ? "col-span-2 aspect-video sm:aspect-[2/1]" : "aspect-video"}`}
+                        className={`group relative w-[82%] shrink-0 snap-center overflow-hidden rounded-md border border-border hover:border-primary/50 transition-all sm:w-auto ${item.type === "video" ? "sm:col-span-2 aspect-video sm:aspect-[2/1]" : "aspect-video"}`}
                       >
                         <img
                           src={assetUrl(item.type === "image" ? item.src : item.poster ?? "")}
