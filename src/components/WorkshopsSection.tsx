@@ -107,7 +107,7 @@ const WorkshopsSection = () => (
                         playsInline
                         preload="auto"
                         aria-label={`${workshop.title} video ${videoIndex + 1}`}
-                        className="w-[76%] shrink-0 snap-center sm:w-full sm:min-w-0 sm:max-w-72 h-auto rounded-md border border-primary/30 bg-black"
+                        className="w-[76%] shrink-0 snap-center aspect-[9/16] object-cover rounded-md border border-primary/30 bg-black sm:w-full"
                       />
                     ))}
                   </div>
