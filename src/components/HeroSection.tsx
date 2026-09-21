@@ -103,7 +103,7 @@ const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="relative flex justify-center lg:justify-end"
           >
-            <div className="relative w-52 h-52 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-2xl overflow-hidden border border-[hsl(var(--accent-teal))]/20 bg-[hsl(var(--bg-base))] shadow-lg">
+            <div className="relative w-40 h-40 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full sm:rounded-2xl overflow-hidden border-2 sm:border border-[hsl(var(--accent-teal))]/30 sm:border-[hsl(var(--accent-teal))]/20 bg-[hsl(var(--bg-base))] shadow-lg">
               <img
                 src={assetUrl(headshotAsset.url)}
                 alt="Ammar Bari"
