@@ -13,7 +13,10 @@ const workshops = [
       "Led a hands-on robotics workshop introducing robotic-arm mechanisms, actuator control, electronics integration, and practical build workflows for more than 120 participants.",
     tags: ["Robotic Arms", "Actuators", "Electronics", "Hands-on Training"],
     videos: [roboticArmWorkshopOne.url, roboticArmWorkshopTwo.url],
-    poster: "/media/robotic-arm-workshop-poster.svg",
+    posters: [
+      "/media/robotic-arm-workshop-1-poster.png",
+      "/media/robotic-arm-workshop-2-poster.png",
+    ],
   },
   {
     title: "RC Car Workshop",
@@ -99,7 +102,7 @@ const WorkshopsSection = () => (
                       <video
                         key={src}
                         src={assetUrl(src)}
-                        poster={assetUrl(workshop.poster)}
+                        poster={assetUrl(workshop.posters?.[videoIndex])}
                         controls
                         playsInline
                         preload="auto"
