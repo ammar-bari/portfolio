@@ -43,6 +43,10 @@ export default function MobileProjectCard({ title, subtitle, badges, paragraphs,
         </button>
       </div>
       {badges && <div className="flex flex-wrap gap-2 mb-4">{badges}</div>}
+      {!expanded && <div className="mb-4 border-l-2 border-secondary/50 pl-3">
+        <p className="mb-1 font-mono text-[10px] uppercase tracking-[0.16em] text-secondary/80">Overview</p>
+        <p className="mobile-description-preview text-sm text-muted-foreground leading-relaxed">{paragraphs[0]?.body}</p>
+      </div>}
       {media.length > 0 && <>
         <div className="mobile-media-gallery flex min-w-0 gap-3 overflow-x-auto snap-x snap-mandatory pb-2">
           {media.map((item, index) => (
@@ -56,7 +60,6 @@ export default function MobileProjectCard({ title, subtitle, badges, paragraphs,
         </div>
         <p className="text-xs text-muted-foreground mt-1 mb-4">{media.length > 1 ? "Swipe to browse · Tap to open" : "Tap to open"}</p>
       </>}
-      {!expanded && <p className="mobile-description-preview text-sm text-muted-foreground leading-relaxed">{paragraphs[0]?.body}</p>}
       <div id={detailsId} hidden={!expanded}>
         <div className="space-y-4">
           {paragraphs.map((paragraph, index) => <div key={index}>
@@ -68,6 +71,13 @@ export default function MobileProjectCard({ title, subtitle, badges, paragraphs,
           {tags.map(tag => <span key={tag} className="font-mono text-xs px-2 py-1 rounded bg-primary/10 text-primary border border-primary/20">{tag}</span>)}
         </div>
       </div>
+      <button type="button" onClick={() => setExpanded(value => !value)}
+        aria-expanded={expanded} aria-controls={detailsId}
+        aria-label={`${expanded ? "Show less about" : "Read more about"} ${title}`}
+        className="mt-2 inline-flex min-h-11 items-center gap-1.5 rounded-md text-sm font-medium text-secondary hover:text-foreground focus-visible:outline focus-visible:outline-2 focus-visible:outline-secondary">
+        {expanded ? "Show less" : "Read more"}
+        <ChevronDown size={16} className={`transition-transform ${expanded ? "rotate-180" : ""}`} />
+      </button>
     </article>
   );
 }
