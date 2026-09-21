@@ -54,7 +54,7 @@ export default function MobileProjectCard({ title, subtitle, badges, paragraphs,
             <button key={item.src} type="button" aria-label={`Open ${item.alt || title}`}
               onClick={() => onMediaClick(media, index)}
               className={`relative shrink-0 snap-start aspect-[4/3] overflow-hidden rounded-md border border-border bg-muted/30 ${media.length === 1 ? "w-full" : "w-[90%]"}`}>
-              {(item.type === "image" || item.poster) && <img src={assetUrl(item.type === "image" ? item.src : item.poster)} alt={item.alt || title} loading="lazy" className="w-full h-full object-contain" />}
+              {(item.type === "image" || item.poster) && <img src={assetUrl(item.type === "image" ? item.src : item.poster)} alt={item.alt || title} loading="lazy" className="w-full h-full object-cover" />}
               {item.type === "video" && <span className="absolute inset-0 flex items-center justify-center"><span className="flex h-12 w-12 items-center justify-center rounded-full bg-background/90 border border-primary/30"><Play size={22} /></span></span>}
             </button>
           ))}
