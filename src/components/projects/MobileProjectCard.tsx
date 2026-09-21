@@ -23,15 +23,16 @@ interface Props {
   tags: string[];
   media: MediaItem[];
   onMediaClick: (media: MediaItem[], index: number) => void;
+  compact?: boolean;
 }
 
-export default function MobileProjectCard({ title, subtitle, badges, paragraphs, tags, media, onMediaClick }: Props) {
+export default function MobileProjectCard({ title, subtitle, badges, paragraphs, tags, media, onMediaClick, compact = false }: Props) {
   const [expanded, setExpanded] = useState(false);
   const detailsId = useId();
 
   return (
-    <article className="min-w-0 rounded-lg border border-border bg-card p-4">
-      <div className="flex items-start justify-between gap-3 mb-3">
+    <article className={`min-w-0 rounded-lg border border-border bg-card ${compact ? "p-3" : "p-4"}`}>
+      <div className={`flex items-start justify-between gap-3 ${compact ? "mb-2" : "mb-3"}`}>
         <div className="min-w-0">
           <h4 className="text-lg font-semibold leading-snug">{title}</h4>
           {subtitle && <p className="font-mono text-xs text-muted-foreground mt-1">{subtitle}</p>}
@@ -42,13 +43,13 @@ export default function MobileProjectCard({ title, subtitle, badges, paragraphs,
           <ChevronDown size={21} className={`transition-transform ${expanded ? "rotate-180" : ""}`} />
         </button>
       </div>
-      {badges && <div className="flex flex-wrap gap-2 mb-4">{badges}</div>}
-      {!expanded && <div className="mb-4 border-l-2 border-secondary/50 pl-3">
+      {badges && <div className={`flex flex-wrap gap-2 ${compact ? "mb-3" : "mb-4"}`}>{badges}</div>}
+      {!expanded && <div className={`${compact ? "mb-3" : "mb-4"} border-l-2 border-secondary/50 pl-3`}>
         <p className="mb-1 font-mono text-[10px] uppercase tracking-[0.16em] text-secondary/80">Overview</p>
         <p className="mobile-description-preview text-sm text-muted-foreground leading-relaxed">{paragraphs[0]?.body}</p>
       </div>}
       {media.length > 0 && <>
-        <div className="mobile-media-gallery flex min-w-0 gap-3 overflow-x-auto snap-x snap-mandatory pb-2">
+        <div className={`mobile-media-gallery flex min-w-0 ${compact ? "gap-2" : "gap-3"} overflow-x-auto snap-x snap-mandatory pb-2`}>
           {media.map((item, index) => (
             <button key={item.src} type="button" aria-label={`Open ${item.alt || title}`}
               onClick={() => onMediaClick(media, index)}
@@ -58,7 +59,7 @@ export default function MobileProjectCard({ title, subtitle, badges, paragraphs,
             </button>
           ))}
         </div>
-        <p className="text-xs text-muted-foreground mt-1 mb-4">{media.length > 1 ? "Swipe to browse · Tap to open" : "Tap to open"}</p>
+        <p className={`text-xs text-muted-foreground mt-1 ${compact ? "mb-3" : "mb-4"}`}>{media.length > 1 ? "Swipe to browse · Tap to open" : "Tap to open"}</p>
       </>}
       <div id={detailsId} hidden={!expanded}>
         <div className="space-y-4">

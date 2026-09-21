@@ -171,10 +171,11 @@ const ResearchSection = () => {
         </div>
 
         {/* Each project pairs its description with its own media. */}
-        <div className="grid gap-4 p-3 sm:p-4">
+        <div className="grid gap-3 p-2 sm:gap-4 sm:p-4">
           {researchCards.map((card) => isMobile ? (
             <MobileProjectCard key={card.title} title={card.title} subtitle={card.year}
               paragraphs={card.paragraphs} tags={card.tags} media={card.media ?? []}
+              compact
               badges={card.badge ? <AchievementBadge tier="recognition" icon="file-text" label={card.badge} /> : undefined}
               onMediaClick={(media, index) => { setModalMedia(media); setModalIndex(index); }} />
           ) : (
